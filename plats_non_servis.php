@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Plats servis</title>
+        <title>Plats non servis</title>
     </head>
     <body>
         <h1>Resto</h1>
@@ -30,8 +30,8 @@
             SELECT DISTINCT libelle FROM `PLAT`
             INNER JOIN CONTIENT ON CONTIENT.numplat=PLAT.numplat
             INNER JOIN COMMANDE ON COMMANDE.numcom=CONTIENT.numcom
-            WHERE datcom > str_to_date('". $_GET["dateD"] ."', '%Y-%m-%d')
-            AND datcom < str_to_date('". $_GET["dateF"] ."', '%Y-%m-%d'));
+            WHERE datcom > str_to_date('{$_GET["dateD"]}', '%Y-%m-%d')
+            AND datcom < str_to_date('{$_GET["dateF"]}', '%Y-%m-%d'));
         ");
         while($data = $query->fetch()) {
             echo $data["libelle"] . "<br>";

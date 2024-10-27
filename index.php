@@ -32,5 +32,35 @@
             </p>
             <button>Envoyer</button>
         </form>
+        <form action="serveurs.php">
+            <h2>Liste des serveurs pour une période à une table : </h2>
+            <p>
+                <label for="dateDServ">Date de début</label><br>
+                <input type="date" name="dateD" id="dateDServ">
+            </p>
+            <p>
+                <label for="dateFServ">Date de début</label><br>
+                <input type="date" name="dateF" id="dateFServ">
+            </p>
+            <p>
+                <label for="table">Table</label><br>
+                <select name="table" id="table">
+                    <?php
+                        $bd;
+                        try {
+                            $bd = new PDO("mysql:host=localhost; dbname=restaurant; charset=utf8", "root", "");
+                        } catch (Exception $e) {
+                            die("Erreur : " . $e->getMessage());
+                        }
+                        
+                        $query = $bd->query("SELECT numtab FROM TABL;");
+                        while($data = $query->fetch()) {
+                            echo "<option value='{$data["numtab"]}'>Table {$data["numtab"]}</option>";
+                        }
+                    ?>
+                </select>
+            </p>
+            <button>Envoyer</button>
+        </form>
     </body>
 </html>

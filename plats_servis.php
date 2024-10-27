@@ -28,8 +28,8 @@
             SELECT DISTINCT libelle FROM `PLAT`
             INNER JOIN CONTIENT ON CONTIENT.numplat=PLAT.numplat
             INNER JOIN COMMANDE ON COMMANDE.numcom=CONTIENT.numcom
-            WHERE datcom > str_to_date('". $_GET["dateD"] ."', '%Y-%m-%d')
-            AND datcom < str_to_date('". $_GET["dateF"] ."', '%Y-%m-%d');
+            WHERE datcom > str_to_date('{$_GET["dateD"]}', '%Y-%m-%d')
+            AND datcom < str_to_date('{$_GET["dateF"]}', '%Y-%m-%d');
         ");
         while($data = $query->fetch()) {
             echo $data["libelle"] . "<br>";
