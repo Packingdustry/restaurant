@@ -11,6 +11,7 @@ require_once("fonctions.php");
         <title>Chiffre d'affaire et nombre de commandes par serveurs</title>
     </head>
     <body>
+        <h3><a href="./">↩ retour</a></h3>
         <h1>Resto</h1>
         <?php
         echo "<h2>Chiffre d'afaire et nombre de commandes par serveur du " . formatDate($_GET["dateD"]) . " au " . formatDate($_GET["dateF"]) . ". </h2>";
@@ -23,8 +24,8 @@ require_once("fonctions.php");
             INNER JOIN COMMANDE ON COMMANDE.numtab=AFFECTER.numtab
             INNER JOIN CONTIENT ON CONTIENT.numcom=COMMANDE.numcom
             INNER JOIN PLAT ON PLAT.numplat=CONTIENT.numplat
-            WHERE dataff > str_to_date('2016-09-01', '%Y-%m-%d')
-            AND dataff < str_to_date('2016-11-01', '%Y-%m-%d')
+            WHERE dataff > str_to_date('{$_GET["dateD"]}', '%Y-%m-%d')
+            AND dataff < str_to_date('{$_GET["dateF"]}', '%Y-%m-%d')
             GROUP BY (SERVEUR.numserv);
         ");
         ?>

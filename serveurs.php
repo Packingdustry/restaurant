@@ -11,6 +11,7 @@ require_once("fonctions.php");
         <title>Serveurs en service</title>
     </head>
     <body>
+        <h3><a href="./">↩ retour</a></h3>
         <h1>Resto</h1>
         <?php
         echo "<h2>Serveurs ayant servit la table {$_GET["table"]} du " . formatDate($_GET["dateD"]) . " au " . formatDate($_GET["dateF"]) . ". </h2>";
