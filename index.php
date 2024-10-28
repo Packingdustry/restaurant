@@ -57,7 +57,7 @@
                             
                             $query = $bd->query("SELECT numtab FROM TABL;");
                             while($data = $query->fetch()) {
-                                echo "<option value='{$data["numtab"]}'>Table {$data["numtab"]}</option>";
+                                echo "<option value='{$data["numtab"]}'>Table n° {$data["numtab"]}</option>";
                             }
                         ?>
                     </select>
@@ -85,6 +85,28 @@
                 <p>
                     <label for="dateFCAServ">Date de début</label><br>
                     <input type="date" name="dateF" id="dateFCAServ">
+                </p>
+                <button>Envoyer</button>
+            </form>
+            <form action="maj_montcom.php">
+                <h2><li>Calcul et mise à jour du montant de la commande : </li></h2>
+                <p>
+                    <label for="commande">Commande</label><br>
+                    <select name="commande" id="commande">
+                        <?php
+                            $bd;
+                            try {
+                                $bd = new PDO("mysql:host=localhost; dbname=restaurant; charset=utf8", "root", "");
+                            } catch (Exception $e) {
+                                die("Erreur : " . $e->getMessage());
+                            }
+                            
+                            $query = $bd->query("SELECT numcom FROM COMMANDE;");
+                            while($data = $query->fetch()) {
+                                echo "<option value='{$data["numcom"]}'>Commande n° {$data["numcom"]}</option>";
+                            }
+                        ?>
+                    </select>
                 </p>
                 <button>Envoyer</button>
             </form>
