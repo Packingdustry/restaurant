@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);?>
+<?php 
+declare(strict_types=1);
+require_once("fonctions.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -11,18 +14,7 @@
         <?php
         echo "<h2>Plats servis entre le " . formatDate($_GET["dateD"]) . " et le " . formatDate($_GET["dateF"]) . ". </h2>";
         
-        function formatDate(string $date): string {
-            $tmp = explode("-", $date);
-            $date = $tmp[2] . '/' . $tmp[1] . '/' . $tmp[0];
-            return $date;
-        }
-        
-        $bd;
-        try {
-            $bd = new PDO("mysql:host=localhost; dbname=restaurant; charset=utf8", "root", "");
-        } catch(Exception $e) {
-            die("Erreur : " . $e->getMessage());
-        }
+        $bd = createPDO();
 
         $query = $bd->query("
             SELECT DISTINCT libelle FROM `PLAT`
@@ -31,6 +23,7 @@
             WHERE datcom > str_to_date('{$_GET["dateD"]}', '%Y-%m-%d')
             AND datcom < str_to_date('{$_GET["dateF"]}', '%Y-%m-%d');
         ");
+        
         while($data = $query->fetch()) {
             echo $data["libelle"] . "<br>";
         }
