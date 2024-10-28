@@ -76,6 +76,18 @@
                 </p>
                 <button>Envoyer</button>
             </form>
+            <form action="zero_CA_serveurs.php">
+                <h2><li>Serveurs n'ayant pas réalisé de chiffre d'affaire pour une période : </li></h2>
+                <p>
+                    <label for="dateDCAServ">Date de début</label><br>
+                    <input type="date" name="dateD" id="dateDCAServ">
+                </p>
+                <p>
+                    <label for="dateFCAServ">Date de début</label><br>
+                    <input type="date" name="dateF" id="dateFCAServ">
+                </p>
+                <button>Envoyer</button>
+            </form>
         </ol>
     </body>
 </html>
